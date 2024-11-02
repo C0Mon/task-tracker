@@ -1,7 +1,6 @@
 import sys, json, os
 from datetime import datetime
 
-# add update task command
 # add delete task command
 
 def updateJson(file: dict) -> None:
@@ -60,7 +59,7 @@ def getTaskIndex(tasks: list[dict], id: int) -> int:
     return -1
 
 def updateDescription(args: list) -> None:
-    update(args[2], 'description', int(args[1]))
+    update(int(args[1]), 'description', args[2])
 
 def update(id: int, property: str, value: str) -> None:
     file = getJson()

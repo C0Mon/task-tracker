@@ -3,6 +3,7 @@ from datetime import datetime
 
 # add delete task command
 
+# read and write
 def updateJson(file: dict) -> None:
     with open('data.json', 'w', encoding='utf-8') as f:
         json.dump(file, f, ensure_ascii=False, indent=4)
@@ -70,6 +71,15 @@ def update(id: int, property: str, value: str) -> None:
         file['tasks'][taskIndex][property] = value
     updateJson(file)
 
+def delete(args: list) -> None:
+    file = getJson()
+    taskIndex = getTaskIndex(file['tasks'], int(args[1]))
+    if taskIndex == -1:
+        print('Task Not Found')
+    else:
+        del file['tasks'][taskIndex]
+    updateJson(file)
+
 def main() -> None:
     for name in commands:
         if name == sys.argv[1]:
@@ -80,7 +90,8 @@ commands = {
     'list': listTasks,
     'mark-in-progress': updateStatus,
     'mark-done': updateStatus,
-    'update': updateDescription
+    'update': updateDescription,
+    'delete': delete
 }
 
 if __name__ == "__main__":

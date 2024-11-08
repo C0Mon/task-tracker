@@ -15,8 +15,12 @@ def getJson() -> dict:
 
 def add(args: list[str]) -> None:
     file = getJson()
+    if len(file['tasks']) >0:
+        id = file['tasks'][-1]['id'] + 1
+    else:
+        id = 0
     data = {
-        'id': len(file['tasks']),
+        'id': id,
         'description': args[1],
         'status': "todo",
         'createdAt': datetime.now().isoformat(),
@@ -30,7 +34,7 @@ def listTasks(args: list[str]) -> None:
     if len(args) == 2:
         file = getTasksByStatus(file, args[1])
     for task in file['tasks']:
-        print(f'{ task['id'] }    { task['description'] }\n')
+        print(f"{ task['id'] }    { task['description'] }\n")
 
 def getTasksByStatus(file: dict, status: str) -> dict:
     newFile = { 'tasks': [] }

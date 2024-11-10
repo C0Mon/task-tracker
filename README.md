@@ -1,6 +1,6 @@
 # task-tracker
 
-A simple command-line interface for managing tasks in a JSON file. This Python script allows you to add, list, update, and delete tasks efficiently. Completed and submitted for https://roadmap.sh/projects/task-tracker
+A simple command-line interface for managing tasks in a JSON file. This Python script allows you to add, list, update, and delete tasks efficiently
 
 ## Features
 
